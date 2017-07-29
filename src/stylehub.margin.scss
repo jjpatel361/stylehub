@@ -1,0 +1,40 @@
+    $marginwidths: 5, 10, 15, 20, 25, 30, 35, 40, 45, 50;
+
+    // Mixin Definitions
+    @mixin margintop($margin) {
+        margin-top: unquote($margin + "px")        
+    }
+    @mixin marginbottom($margin){
+        margin-bottom: unquote($margin + "px")
+    }
+    @mixin marginleft($margin) {
+        margin-left: unquote($margin + "px")
+    }
+    @mixin marginright($margin){
+        margin-right: unquote($margin + "px")
+    }
+    @mixin marginall($margin) {
+        @include margintop($margin);
+        @include marginbottom($margin);
+        @include marginright($margin);
+        @include marginleft($margin);
+    }
+
+
+    @each $margin in $marginwidths{
+        .mt-#{$margin} {
+            @include margintop($margin)
+        }
+        .mb-#{$margin} {
+            @include marginbottom($margin)
+        }
+        .mr-#{$margin} {
+            @include marginright($margin)
+        }
+        .ml-#{$margin} {
+            @include marginleft($margin)
+        }
+        .ma-#{$margin} {
+            @include marginall($margin)
+        }
+    }
