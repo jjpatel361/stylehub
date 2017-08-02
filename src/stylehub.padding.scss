@@ -1,0 +1,40 @@
+    $paddingwidths: 5, 10, 15, 20, 25, 30, 35, 40, 45, 50;
+
+    // Mixin Definitions
+    @mixin paddingtop($padding) {
+        padding-top: unquote($padding + "px")        
+    }
+    @mixin paddingbottom($padding){
+        padding-bottom: unquote($padding + "px")
+    }
+    @mixin paddingleft($padding) {
+        padding-left: unquote($padding + "px")
+    }
+    @mixin paddingright($padding){
+        padding-right: unquote($padding + "px")
+    }
+    @mixin paddingall($padding) {
+        @include paddingtop($padding);
+        @include paddingbottom($padding);
+        @include paddingright($padding);
+        @include paddingleft($padding);
+    }
+
+
+    @each $padding in $paddingwidths{
+        .pt-#{$padding} {
+            @include paddingtop($padding)
+        }
+        .pb-#{$padding} {
+            @include paddingbottom($padding)
+        }
+        .pr-#{$padding} {
+            @include paddingright($padding)
+        }
+        .pl-#{$padding} {
+            @include paddingleft($padding)
+        }
+        .pa-#{$padding} {
+            @include paddingall($padding)
+        }
+    }
